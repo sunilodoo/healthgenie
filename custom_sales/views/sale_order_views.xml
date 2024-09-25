@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="custom_sale_order_form_view" model="ir.ui.view">
+			<field name="name">custom.sale.order.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+                	<field name="sale_number"/>
+                	<!-- <field name="sale_number_b2b"/> -->
+                	<field name="order_id"/>
+                	<field name="is_replacement"/>
+                	<field name="original_order_id"/>
+					<field name="order_type"/>
+					<field name="order_date"/>
+					<field name="invoice_no"/>
+                    <field name="invoice_date"/>
+					<field name="month_of_sale" required="1"/>
+                    <field name="portal_id"/>
+					<!-- <field name="third_party"/> -->
+					<field name="warehouse_id" required="1"/>
+					<!-- <field name="order_category" required="1"/> -->
+					<!-- <field name="tracking_no"/> -->
+					<!-- <field name="delivery_partner_name"/> -->
+					<!-- <field name="hg_party_id"/> -->
+            	</xpath>
+            	<xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
+            		<field name="product_hsn"/>
+            		<field name="product_default_code"/>
+            		<field name="sku_id"/>
+            		<!-- <field name="sku_id" invisible="1"/> -->
+            		<field name="sku_name"/>
+                    <field name="portal_price"/>
+                    <field name="shipping_charges_untaxed"/>
+                	<field name="shipping_charges_tax"/>
+                    <field name="shipping_charges"/>
+                    <!-- <field name="gift_wrap_price"/> -->
+                	<!-- <field name="item_promo_discount"/> -->
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="after">
+            		<field name="price_tax"/>
+            		<field name="sgst_rate"/>
+            		<field name="sgst_amount"/>
+            		<field name="cgst_rate"/>
+            		<field name="cgst_amount"/>
+            		<field name="igst_rate"/>
+            		<field name="igst_amount"/>
+                    <field name="tax_sum"/>
+
+                    <!-- <field name="shipping_charges_basic"/>
+                    <field name="shipping_charges_sgst"/>
+                    <field name="shipping_charges_cgst"/>
+                    <field name="shipping_charges_igst"/>
+                    <field name="gift_wrap_basic"/>
+                    <field name="gift_wrap_sgst"/>
+                    <field name="gift_wrap_cgst"/>
+                    <field name="gift_wrap_igst"/>
+                    <field name="item_promo_discount_basic"/>
+                    <field name="item_promo_sgst"/>
+                    <field name="item_promo_cgst"/>
+                    <field name="item_promo_igst"/> -->
+
+            		<field name="subtotal_with_tax"/>
+                    <field name="grand_subtotal"/>
+                    <field name="c_price_subtotal"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_tax']" position="after">
+                	<field name="sgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                	<field name="cgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="igst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                	<field name="total_s_c_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            		<field name="c_amount_untaxed"/>
+                    <!-- <field name="return_payment"/> -->
+				    <field name="payment_recieved"/>
+				    <field name="short_access_recieved"/>
+                    <!-- <field name="total_s_c" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c_basic" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c_sgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c_cgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_s_c_igst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_g_w" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_g_w_basic" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_g_w_sgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_g_w_cgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_g_w_igst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_i_p_d" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_i_p_d_basic" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_i_p_d_sgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="total_i_p_d_cgst" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                	<field name="total_i_p_d_igst" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                    
+            	</xpath>
+                  
+            <xpath expr="//page[2]" position="after">
+				<page string="Sale Payment">
+					<field name="sale_payment_ids">
+						<tree string="Fee Structure" editable="bottom">
+							<field name="order_id" invisible="1"/>
+                            <field name="date"/>
+							<field name="comission"/>
+							<field name="comission_cgst"/>
+							<field name="comission_igst"/>
+							<field name="comission_sgst"/>
+							<field name="current_reserve_ammount"/>
+							<field name="fba_pick_and_pack"/>
+							<field name="fba_pick_and_pack_cgst"/>
+                            <field name="fba_pick_and_pack_sgst"/>
+                            <field name="fba_weight_handling_fee"/>
+                            <field name="fba_weight_handling_fee_cgst"/>
+                            <field name="fba_weight_handling_fee_sgst"/>
+                            <field name="fixed_closing_fees"/>
+                            <field name="fixed_closing_fees_cgst"/>
+                            <field name="fixed_closing_fees_sgst"/>
+                            <field name="fixed_closing_fees_igst"/>
+                             <field name="gift_wrap"/>
+                            <field name="gift_wrap_charge_back"/>
+                            <field name="gift_wrap_charge_cgst"/>
+                            <field name="gift_wrap_charge_sgst"/>
+                            <field name="gift_wrap_tax"/>
+                            <field name="payment_retraction_item"/>
+                            <field name="principal"/>
+                            <field name="product_tax"/>
+                            <field name="product_tax_discount"/>
+                            <field name="promo_rebates"/>
+                            <field name="refund_commission"/>
+                            <field name="refund_commission_igst"/>
+                            <field name="removal_complete"/>
+                            <field name="removal_complete_cgst"/>
+
+                            <field name="removal_complete_sgst"/>
+                            <field name="shipping"/>
+                            <field name="shipping_charge_back"/>
+                            <field name="shipping_charge_back_cgst"/>
+                            <field name="shipping_charge_back_sgst"/>
+                            <field name="shipping_discount"/>
+                            <field name="shipping_tax"/>
+                            <field name="shipping_tax_discount"/>
+                            <field name="storage_fee"/>
+                            <field name="storage_billing_cgst"/>
+                            <field name="storage_billing_sgst"/>
+                            <field name="storage_reniew_billing"/>
+                            <field name="storage_reniew_billing_cgst"/>
+                            <field name="storage_reniew_billing_sgst"/>
+                            <field name="tcs_cgst"/>
+                            <field name="tcs_igst"/>
+                            <field name="tcs_sgst"/>
+                            <field name="tds"/>
+                            <field name="technology_fee"/>
+                            <field name="technology_fee_igst"/>
+
+
+
+
+                           
+						</tree>
+					</field>
+
+       
+					<!--<button name="change_year" string="Update Fin" type="object" class="oe_highlight" />-->
+					<!--<button name="onchange_country" string="Update Country" type="object" class="oe_highlight" />-->
+				</page>
+				
+            </xpath>
+
+			
+
+
+			</field>
+		</record>
+
+		<record id="custom_sale_Quotation_tree_view" model="ir.ui.view">
+			<field name="name">ssale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="after">
+                    <field name="portal_id"/>
+                	<!-- <field name="third_party"/> -->
+                	<!-- <field name="order_category"/> -->
+                	<field name="warehouse_id" required="1"/>
+                	<field name="order_id"/>
+                	<field name="is_replacement"/>
+                	<field name="invoice_no"/>
+                    <field name="total_s_c"/>
+                    <!-- <field name="total_g_w"/> -->
+                    <!-- <field name="total_i_p_d"/> -->
+            	</xpath>
+            </field>
+        </record>
+
+        <record id="custom_sale_order_tree_view" model="ir.ui.view">
+			<field name="name">ssale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='company_id']" position="after">
+                    <field name="portal_id"/>
+                	<!-- <field name="third_party"/> -->
+                	<!-- <field name="order_category"/> -->
+                	<field name="warehouse_id" required="1"/>
+                	<field name="order_id"/>
+                	<field name="is_replacement"/>
+                	<field name="invoice_no"/>
+                    <field name="total_s_c"/>
+                    <!-- <field name="total_g_w"/> -->
+                    <!-- <field name="total_i_p_d"/> -->
+            	</xpath>
+            </field>
+        </record>
+
+        <record id="custom__sales_quotations_filter_view" model="ir.ui.view">
+            <field name="name">custom.sale.order.search.inherit.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="order_id"/>
+                    <field name="invoice_no"/>
+                    <field name="sale_number"/>
+                    <filter string="Warehouse WH" name="warehouse_id" domain="[('warehouse_id.code', '=', 'WH')]"/>
+                    <!-- <filter string="B2B" name="order_category" domain="[('order_category', '=', 'b2b')]" help="B2B Orders"/> -->
+                    <!-- <filter string="B2C" name="order_category" domain="[('order_category', '=', 'b2c')]" help="B2C Orders"/> -->
+                    <filter string="Replacement Order" name="is_replacement" domain="[('is_replacement', '=', True)]" help="Replacement Order"/>
+                    <filter string="Is Replacement" name="is_replacement" domain="[]" context="{'group_by': 'is_replacement'}"/>
+                    <!-- <filter string="B2B/B2C" name="order_category" domain="[]" context="{'group_by': 'order_category'}"/> -->
+                    <filter string="Order By Month" name="order_month" domain="[]" context="{'group_by': 'order_date'}"/>
+                    <filter string="Month of Sale" name="month_of_sale" domain="[]" context="{'group_by': 'month_of_sale'}"/>
+                    <filter string="Warehouse" name="warehouse_id" domain="[]" context="{'group_by': 'warehouse_id'}"/>
+                    <filter string="Portal" name="portal_id" domain="[]" context="{'group_by': 'portal_id'}"/>
+                    <!-- <filter string="Third Party" name="third_party" domain="[]" context="{'group_by': 'third_party'}"/> -->
+                    <filter string="Order Type" name="order_type" domain="[]" context="{'group_by': 'order_type'}"/>
+                    <filter string="Group By Total" name="amount_total" domain="[]" context="{'group_by': 'amount_total'}"/>
+                    <filter string="Order Status" name="state" domain="[]" context="{'group_by': 'state'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom__sales_order_filter_view" model="ir.ui.view">
+            <field name="name">custom.sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='name']" position="after">
+                    <field name="order_id"/>
+                    <field name="invoice_no"/>
+                    <filter string="Warehouse WH" name="warehouse_id" domain="[('warehouse_id.code', '=', 'WH')]"/>
+                    <!-- <filter string="B2B" name="order_category" domain="[('order_category', '=', 'b2b')]" help="B2B Orders"/> -->
+                    <!-- <filter string="B2C" name="order_category" domain="[('order_category', '=', 'b2c')]" help="B2C Orders"/> -->
+                    <filter string="Replacement Order" name="is_replacement" domain="[('is_replacement', '=', True)]" help="Replacement Order"/>
+                    <filter string="Is Replacement" name="is_replacement" domain="[]" context="{'group_by': 'is_replacement'}"/>
+                    <!-- <filter string="B2B/B2C" name="order_category" domain="[]" context="{'group_by': 'order_category'}"/> -->
+                    <filter string="Order By Month" name="order_month" domain="[]" context="{'group_by': 'order_date'}"/>
+                    <filter string="Month of Sale" name="month_of_sale" domain="[]" context="{'group_by': 'month_of_sale'}"/>
+                    <filter string="Warehouse" name="warehouse_id" domain="[]" context="{'group_by': 'warehouse_id'}"/>
+                    <filter string="Portal Party" name="portal_id" domain="[]" context="{'group_by': 'portal_id'}"/>
+                    <!-- <filter string="Third Party" name="third_party" domain="[]" context="{'group_by': 'third_party'}"/> -->
+                    <filter string="Order Type" name="order_type" domain="[]" context="{'group_by': 'order_type'}"/>
+                    <filter string="Group By Total" name="amount_total" domain="[]" context="{'group_by': 'amount_total'}"/>
+                    <filter string="Invoice Status" name="invoice_status" domain="[]" context="{'group_by': 'invoice_status'}"/>
+                </xpath>
+                <!-- <search string="Search Sales Order">
+                    <field name="name" string="Order" filter_domain="['|', '|', ('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="user_id"/>
+                    <field name="team_id" string="Sales Team"/>
+                    <field name="order_line" string="Product" filter_domain="[('order_line.product_id', 'ilike', self)]"/>
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                    We only allow to search on the following sale order line fields (product, name) because the other fields, such as price, quantity, ...
+                        will not be searched as often, and if they need to be searched it's usually in the context of products
+                        and then they can be searched from the page listing the sale order lines related to a product (from the product itself).
+                   
+                    <filter string="My Orders" domain="[('user_id', '=', uid)]" name="my_sale_orders_filter"/>
+                    <filter invisible="1" string="Late Activities" name="activities_overdue"
+                        domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                        help="Show all records which has next action date is before today"/>
+                    <filter invisible="1" string="Today Activities" name="activities_today"
+                        domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter invisible="1" string="Future Activities" name="activities_upcoming_all"
+                        domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Salesperson" name="salesperson" domain="[]" context="{'group_by': 'user_id'}"/>
+                        <filter name="customer" string="Customer" domain="[]" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Order Date" name="order_month" domain="[]" context="{'group_by': 'date_order'}"/>
+                    </group>
+               </search> -->
+            </field>
+        </record>
+	</data>
+	<!-- <data noupdate="0">
+
+        <record id="custom_seq_sale_order" model="ir.sequence">
+            <field name="name">Sales Order</field>
+            <field name="code">sale.order</field>
+            <field name="inherit_id" ref="sale.seq_sale_order"/>
+            <field name="prefix">S</field>
+            <field name="padding">7</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data> -->
+</odoo>
+

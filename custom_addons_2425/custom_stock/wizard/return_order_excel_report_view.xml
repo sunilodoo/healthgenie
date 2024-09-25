@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="return_order_xls_wizard" model="ir.ui.view">
+            <field name="name">return.order.xls.wizard</field>
+            <field name="model">return.order.xls</field>
+            <field name="arch" type="xml">
+                <form string="Return Order Xls Report">
+                    <p class="oe_grey">You want to Print Return Order Excel Report?</p>
+                    <field name="flag" invisible="1"/>
+                    <group attrs="{'invisible':[('flag','=',True)]}">
+                        <!-- <field name="return_order_category"/> -->
+                        <field name="month_of_return"/>
+                        <field name="warehouse_id"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <group attrs="{'invisible':[('flag','=',False)]}">
+                        <field name="file_name" invisible="1" />
+                        <field name="file_xls" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button string="Print Excel Report" class="btn-primary" name="action_return_order_xls" type="object" attrs="{'invisible':[('flag','=',True)]}"/>
+                        <button string="Cancel" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_return_order_xls" model="ir.actions.act_window">
+            <field name="name">Return Order Xls Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">return.order.xls</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="custom_stock.return_order_xls_wizard"/>
+            <field name="target">new</field>
+        </record>
+         <menuitem id="menu_return_order_reports" name="Return Order Reports" parent="custom_stock.menu_retrn_order_account" sequence="3" action="custom_stock.action_return_order_xls"/>                                                  
+</odoo>

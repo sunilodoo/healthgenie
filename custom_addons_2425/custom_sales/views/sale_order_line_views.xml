@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <!-- Sale Order Line Inherit -->
+     <record id="custom_sale_order_view" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+        	<!-- <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+				<field name="name"/>
+			</xpath> -->
+
+			<xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="after" class="custom_size">
+				<field name="vendor_id" style="width:30%%"/>
+				<field name="bd_flag" invisible="1"/>
+				<field name="remarks"/>
+			</xpath>
+
+			<!-- <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="colors">red:bd_flag == True</attribute>
+             </xpath> -->
+
+			<xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="after">
+				<field name="hsn_code"/>
+				<field name="purchase_id"/>
+				<field name="edd"/>
+				<field name="edrg"/>
+				<field name="adrg"/>
+				<field name="cartons" readonly="1"/>
+				<field name="vol_wt" readonly="1" invisible='1'/>
+				<field name="cbm" readonly="1"/>
+				<field name="total_nwt_crtn" readonly="1" invisible='1'/>
+				<field name="total_gwt_crtn" readonly="1" invisible='1'/>
+				<field name="total_vol_wt" readonly="1" invisible='1'/>
+				<field name="attach_ment" widget="image" style="width:20%%"/>
+				<field name="is_descr"/>
+			</xpath>
+			<!-- <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="replace">
+				
+			</xpath> -->
+			<!-- <xpath expr="//field[@name='order_line']/tree//field[@name='qty_invoiced']" position="replace">
+				<field name="qty_invoiced" invisible="1"/>
+			</xpath> -->
+			<xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="attributes">
+				<attribute name="string">UoM</attribute>
+			</xpath>
+        </field>
+    </record>
+		
+	<!-- <record id="action_so_review_proc" model="ir.actions.act_window">
+        <field name="name">SO's Summary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar,pivot,graph,activity</field>
+        <field name="view_id" ref="sale.view_order_tree"/>
+      	<field name="target">new</field>
+        <field name="domain">[('state','=', 'sale')]</field>
+        <field name="context">{'create':0, 'edit':0}</field>
+    </record>  -->
+
+	<!-- <menuitem id="menu_so_review" name="SO's Summary" parent="purchase.menu_procurement_management" sequence="26" action="action_so_review_proc"/> -->
+    <!-- <menuitem id="menu_so_review" name="SO's Summary" parent="purchase.menu_procurement_management" sequence="26" action="sale.action_orders_salesteams"/> -->
+
+	<!-- <menuitem id="menu_so_review" name="SO's Summary" parent="sale.sale_menu_root" sequence="9" action="action_so_review_proc"/> -->
+	<!-- <menuitem id="menu_so_review" name="SO's Summary" parent="purchase.menu_procurement_management" sequence="26" action="action_so_review_proc"/> -->
+  </data>
+</odoo>

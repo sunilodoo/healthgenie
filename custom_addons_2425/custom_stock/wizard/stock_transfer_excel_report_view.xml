@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="stock_transfer_sale_xls_wizard" model="ir.ui.view">
+            <field name="name">stock.transfer.sale.xls.wizard</field>
+            <field name="model">stock.transfer.sale.xls</field>
+            <field name="arch" type="xml">
+                <form string="Stock Tranfer Sale Xls Report">
+                    <p class="oe_grey">You want to Print Stock Tranfer Sale Excel Report?</p>
+                    <field name="flag" invisible="1"/>
+                    <group attrs="{'invisible':[('flag','=',True)]}">
+                        <field name="month_of_stock_trns"/>
+                        <field name="ship_from_fc"/>
+                    </group>
+                    <group attrs="{'invisible':[('flag','=',False)]}">
+                        <field name="file_name" invisible="1" />
+                        <field name="file_xls" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button string="Print Excel Report" class="btn-primary" name="action_stock_tranfer_sale_xls" type="object" attrs="{'invisible':[('flag','=',True)]}"/>
+                        <button string="Cancel" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="stock_transfer_purchase_xls_wizard" model="ir.ui.view">
+            <field name="name">stock.transfer.purchase.xls.wizard</field>
+            <field name="model">stock.transfer.purchase.xls</field>
+            <field name="arch" type="xml">
+                <form string="Stock Tranfer Purchase Xls Report">
+                    <p class="oe_grey">You want to Print Stock Tranfer Purchase Excel Report?</p>
+                    <field name="flag" invisible="1"/>
+                    <group attrs="{'invisible':[('flag','=',True)]}">
+                        <field name="month_of_stock_trns"/>
+                        <field name="ship_to_fc"/>
+                    </group>
+                    <group attrs="{'invisible':[('flag','=',False)]}">
+                        <field name="file_name" invisible="1" />
+                        <field name="file_xls" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button string="Print Excel Report" class="btn-primary" name="action_stock_tranfer_purchase_xls" type="object" attrs="{'invisible':[('flag','=',True)]}"/>
+                        <button string="Cancel" class="btn-primary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_transfer_sale_xls" model="ir.actions.act_window">
+            <field name="name">Stock Tranfer Sale Xls Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.transfer.sale.xls</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="custom_stock.stock_transfer_sale_xls_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <record id="action_stock_transfer_purchase_xls" model="ir.actions.act_window">
+            <field name="name">Stock Tranfer Purchase Xls Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.transfer.purchase.xls</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="custom_stock.stock_transfer_purchase_xls_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_stock_transfer_reports" name="Stock Transfer Reports" parent="stock.menu_stock_root" sequence="24"/>
+        <menuitem id="menu_stock_transfer_sale_reports" name="Stock Transfer Sales Reports" parent="custom_stock.menu_stock_transfer_reports" sequence="1" action="custom_stock.action_stock_transfer_sale_xls"/>
+        <menuitem id="menu_stock_transfer_purchase_reports" name="Stock Transfer Purchase Reports" parent="custom_stock.menu_stock_transfer_reports" sequence="2" action="custom_stock.action_stock_transfer_purchase_xls"/>
+        <menuitem id="menu_stock_transfer_invoice_sale_report" parent="custom_stock.menu_stock_transfer_invoice" name="Stock Transfer Sales Repots" action="custom_stock.action_stock_transfer_sale_xls" sequence="3"/>
+        <menuitem id="menu_stock_transfer_invoice_purchase_report" parent="custom_stock.menu_stock_transfer_invoice" name="Stock Transfer Purchase Repots" action="custom_stock.action_stock_transfer_purchase_xls" sequence="4"/>
+</odoo>

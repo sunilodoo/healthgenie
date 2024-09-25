@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_warehouse,import.warehouse,model_import_warehouse,base.group_user,1,1,1,1
+access_stock_transfer,stock.transfer,model_stock_transfer,base.group_user,1,1,1,1
+access_import_stock_transfer,import.stock.transfer,model_import_stock_transfer,base.group_user,1,1,1,1
+access_stock_transfer_sale,stock.transfer.sale,model_stock_transfer_sale,base.group_user,1,1,1,1
+access_stock_transfer_sale_line,stock.transfer.sale.line,model_stock_transfer_sale_line,base.group_user,1,1,1,1
+access_stock_transfer_purchase,stock.transfer.purchase,model_stock_transfer_purchase,base.group_user,1,1,1,1
+access_stock_transfer_purchase_line,stock.transfer.purchase.line,model_stock_transfer_purchase_line,base.group_user,1,1,1,1
+access_stock_transfer_sale_xls,stock.transfer.sale.xls,model_stock_transfer_sale_xls,base.group_user,1,1,1,1
+access_stock_transfer_purchase_xls,stock.transfer.purchase.xls,model_stock_transfer_purchase_xls,base.group_user,1,1,1,1
+access_return_order,return.order,model_return_order,base.group_user,1,1,1,1
+access_import_return_order,import.return.order,model_import_return_order,base.group_user,1,1,1,1
+access_return_order_xls,return.order.xls,model_return_order_xls,base.group_user,1,1,1,1

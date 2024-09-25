@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+    <record id="product_category1_form_view" model="ir.ui.view">
+      <field name="name">product.category1.form</field>
+      <field name="model">product.category1</field>
+      <field name="arch" type="xml">
+        <form string="Product Category-1">
+          <group>
+          <field name="name"/>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="product_category1_tree_view" model="ir.ui.view">
+      <field name="name">product.category1.tree</field>
+      <field name="model">product.category1</field>
+      <field name="arch" type="xml">
+        <tree string="Product Category-1">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    <record id="product_category2_form_view" model="ir.ui.view">
+      <field name="name">product.category2.form</field>
+      <field name="model">product.category2</field>
+      <field name="arch" type="xml">
+        <form string="Product Category-2">
+          <group>
+          <field name="name"/>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="product_category2_tree_view" model="ir.ui.view">
+      <field name="name">product.category2.tree</field>
+      <field name="model">product.category2</field>
+      <field name="arch" type="xml">
+        <tree string="Product Category-2">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    <record id="product_category3_form_view" model="ir.ui.view">
+      <field name="name">product.category3.form</field>
+      <field name="model">product.category3</field>
+      <field name="arch" type="xml">
+        <form string="Product Category-3">
+          <group>
+          <field name="name"/>
+          </group>
+        </form>
+      </field>
+    </record>
+    <record id="product_category3_tree_view" model="ir.ui.view">
+      <field name="name">product.category3.tree</field>
+      <field name="model">product.category3</field>
+      <field name="arch" type="xml">
+        <tree string="Product Category-3">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_product_category1" model="ir.actions.act_window">
+      <field name="name">Product Category-1</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.category1</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        No Product Category-1 Records are found.</p>
+      </field>
+    </record>
+    <record id="action_product_category2" model="ir.actions.act_window">
+      <field name="name">Product Category-2</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.category2</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        No Product Category-2 Records are found.</p>
+      </field>
+    </record>
+    <record id="action_product_category3" model="ir.actions.act_window">
+      <field name="name">Product Category-3</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.category3</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        No Product Category-3 Records are found.</p>
+      </field>
+    </record>
+    <menuitem id="menu_product_category1" parent="sale.product_menu_catalog" action="custom_product.action_product_category1" sequence="9"/>
+    <menuitem id="menu_product_category2" parent="sale.product_menu_catalog" action="custom_product.action_product_category2" sequence="10"/>
+    <menuitem id="menu_product_category3" parent="sale.product_menu_catalog" action="custom_product.action_product_category3" sequence="11"/>
+	</data>
+</odoo>
+

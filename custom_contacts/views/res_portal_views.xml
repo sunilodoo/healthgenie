@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+    <record id="res_portal_form_view" model="ir.ui.view">
+        <field name="name">res.portal.form</field>
+        <field name="model">res.portal</field>
+        <field name="arch" type="xml">
+          <form string="Portal Name">
+            <group>
+                <field name="name"/>
+              </group>
+          </form>
+        </field>
+    </record>
+
+    <record id="res_portal_tree_view" model="ir.ui.view">
+      <field name="name">res.portal.tree</field>
+      <field name="model">res.portal</field>
+      <field name="arch" type="xml">
+        <tree string="Portal Name">
+            <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_res_portal" model="ir.actions.act_window">
+        <field name="name">Res Portal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.portal</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="domain">[('invoice_status','=','upselling')]</field> -->
+        <!-- <field name="context">{'create': True}</field> -->
+        <!-- <field name="search_view_id" ref="view_sales_order_filter"/> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No Portal Records are found.</p>
+        </field>
+        </record>
+        <menuitem id="menu_res_portal" parent="contacts.menu_contacts" action="custom_contacts.action_res_portal" sequence="4"/>
+	</data>
+</odoo>

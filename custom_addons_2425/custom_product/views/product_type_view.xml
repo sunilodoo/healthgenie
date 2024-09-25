@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="brand_name_form_view" model="ir.ui.view">
+            <field name="name">product.type.model</field>
+            <field name="model">product.type</field>
+            <field name="arch" type="xml">
+                <tree string="Product Type">
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+         <record id="brand_name_form_view" model="ir.ui.view">
+            <field name="name">product.type.model</field>
+            <field name="model">product.type</field>
+            <field name="arch" type="xml">
+                <form string="Product Type">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="action_product_type" model="ir.actions.act_window">
+            <field name="name">Product type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Product type Name Records are found.</p>
+            </field>
+        </record>
+        <menuitem id="menu_product_name" name="Product Type" parent="sale.product_menu_catalog" action="custom_product.action_product_type" sequence="100"/>
+    </data>
+</odoo>

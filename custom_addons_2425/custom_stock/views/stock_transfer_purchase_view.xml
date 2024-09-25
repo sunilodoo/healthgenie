@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="stock_transfer_purchase_form_view" model="ir.ui.view">
+            <field name="name">stock.transfer.purchase.form</field>
+            <field name="model">stock.transfer.purchase</field>
+            <field name="arch" type="xml">
+            	<form string="Stock Transfer Purchase">
+                <sheet>
+                  <group>
+                    <group>
+  	                	<div class="oe_title">
+                      <h1>
+                        <field name="name"/>
+                      </h1>
+                    </div>
+                      <field name="sale_invoice"/>
+                      <field name="ship_from_fc"/>
+                      <field name="gstin"/>
+                      <field name="state_id"/>
+                      <field name="ship_to_fc"/>
+                      <field name="debit_note"/>
+  	                	<field name="receipt"/>
+                    </group>
+                    <group>
+                      <field name="month_of_stock_trns"/>
+                      <field name="invoice_no"/>
+                      <field name="invoice_date"/>
+                      <field name="trn_type"/>
+                      <field name="ord_id"/>
+                      <field name="stock_transfer"/>
+                      <field name="transfer_id_odoo"/>
+                      <field name="company_id" invisible="1"/>
+                      <field name="currency_id" invisible="1"/>
+                      <field name="state"/>
+                      <!-- <field name="sgst_rate"/> -->
+                      <!-- <field name="sgst_amount"/> -->
+                      <!-- <field name="utgst_rate"/> -->
+                      <!-- <field name="utgst_amount"/> -->
+                      <!-- <field name="cgst_rate"/> -->
+                      <!-- <field name="cgst_amount"/> -->
+                      <!-- <field name="comp_c_r"/> -->
+                      <!-- <field name="comp_c_a"/> -->
+                      <!-- <field name="sgst_rate"/>
+                      <field name="sgst_amount"/>
+                      <field name="utgst_rate"/>
+                      <field name="default_code"/>
+                      <field name="taxes_id"/>
+                      <field name="purchase_ladgers"/>
+                      <field name="l10n_in_hsn_code"/>
+                      <field name="asin"/>
+                      <field name="sku"/>
+                      <field name="quntity"/>
+                      <field name="taxable_value"/>
+                      <field name="igst_rate"/>
+                      <field name="igst_amount"/>
+                      <field name="invoice_vales"/>
+                      <field name="utgst_amount"/>
+                      <field name="cgst_rate"/>
+                      <field name="cgst_amount"/>
+                      <field name="comp_c_r"/>
+                      <field name="comp_c_a"/>
+                      <field name="gstin_of_supplier"/>
+                      <field name="irn_no"/>
+                      <field name="irn_f_s"/>
+                      <field name="irn_date"/>
+                      <field name="irn_e_c"/>
+  	                	<field name="currency_id"/> -->
+                    </group>
+	                </group>
+                <notebook>
+                  <page string="Stock Transfer Lines" name="stock_transfer_lines">
+                    <field name="stock_transfer_line" widget="section_and_note_one2many">
+                      <tree string="Stock Transfer Lines1" editable="bottom">
+                        <field name="product_product_id"/>
+                        <field name="name"/>
+                        <field name="default_code"/>
+                        <field name="sku"/>
+                        <field name="asin"/>
+                        <field name="l10n_in_hsn_code"/>
+                        <field name="unit_price"/>
+                        <field name="quntity"/>
+                        <field name="taxes_id" widget="many2many_tags"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="taxable_value"/>
+                        <field name="igst_rate"/>
+                        <field name="igst_amount"/>
+                        <field name="other_charges"/>
+                        <field name="invoice_vales"/>
+                        <field name="purchase_ladgers"/>
+                        <field name="trans_id"/>
+                        <field name="invoice_no"/>
+                        <field name="stock_transfer"/>
+                      </tree>
+                    </field>
+                  </page>
+                </notebook>
+                <group>
+                  <group>
+                  </group>
+                  <group>
+                    <group>
+                    </group>
+                    <group>
+                      <field name="total_taxable_value" decoration-bf="1"/>
+                      <field name="total_igst_amount" decoration-bf="1"/>
+                      <field name="other_charges" decoration-bf="1"/>
+                      <field name="total_invoice_vales" decoration-bf="1"/>
+                    </group>
+                  </group>
+                </group>
+                </sheet>
+            	</form>
+			</field>
+		</record>
+
+		<record id="stock_transfer_purchase_tree_view" model="ir.ui.view">
+            <field name="name">stock.transfer.purchase.tree</field>
+            <field name="model">stock.transfer.purchase</field>
+            <field name="arch" type="xml">
+            	<tree string="Stock Transfer Purchase">
+                <field name="name"/>
+                <field name="sale_invoice"/>
+                <field name="ship_from_fc"/>
+                <field name="state_id"/>
+                <field name="trn_type"/>
+                <field name="ord_id"/>
+                <field name="stock_transfer"/>
+                <field name="transfer_id_odoo"/>
+                <field name="month_of_stock_trns"/>
+                <field name="invoice_no"/>
+                <field name="invoice_date"/>
+                <field name="total_taxable_value" sum="Total Taxable Vales" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="total_igst_amount" sum="Total IGST Amount" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="other_charges" sum="Total Other Charges" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="total_invoice_vales" sum="Total Bill Vales" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+
+
+                <!-- <field name="igst_rate"/> -->
+                <!-- <field name="sgst_rate"/> -->
+                <!-- <field name="sgst_amount"/> -->
+                <!-- <field name="utgst_rate"/> -->
+                <!-- <field name="utgst_amount"/> -->
+                <!-- <field name="cgst_rate"/> -->
+                <!-- <field name="cgst_amount"/> -->
+                <!-- <field name="comp_c_r"/> -->
+                <!-- <field name="comp_c_a"/> -->
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="ship_to_fc"/>
+                <field name="state"/>
+            	</tree>
+			</field>
+		</record>
+    <record id="stock_transfer_purchase_filter_view" model="ir.ui.view">
+            <field name="name">stock.transfer.purchase.search</field>
+            <field name="model">stock.transfer.purchase</field>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+              <search string="Stock Transfer Purchase">
+                    <field name="name"/>
+                    <field name="ord_id"/>
+                    <field name="sale_invoice"/>
+                    <filter string="Stock Transfer Supplier" name="ship_from_fc" domain="[]" context="{'group_by': 'ship_from_fc'}"/>
+                    <filter string="Stock Transfer Receiver" name="ship_to_fc" domain="[]" context="{'group_by': 'ship_to_fc'}"/>
+                    <filter string="Transaction Type" name="trn_type" domain="[]" context="{'group_by': 'trn_type'}"/>
+                    <filter string="Month of Stock Transfer" name="month_of_stock_trns" domain="[]" context="{'group_by': 'month_of_stock_trns'}"/>
+              </search>
+            </field>
+        </record>
+
+		<record id="action_stock_transfer_purchase" model="ir.actions.act_window">
+            <field name="name">Stock Transfer Purchase</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.transfer.purchase</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('invoice_status','=','upselling')]</field> -->
+            <!-- <field name="context">{'create': True}</field> -->
+            <!-- <field name="search_view_id" ref="view_sales_order_filter"/> -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Stock Transfer Purchase Records are found.</p>
+            </field>
+        </record>
+        <menuitem id="menu_stock_transfer_purchase" parent="stock.menu_stock_root" action="custom_stock.action_stock_transfer_purchase" sequence="23"/>
+        <menuitem id="menu_stock_transfer_invoice_purchase" parent="custom_stock.menu_stock_transfer_invoice" name="Stock Transfer Purchase" action="custom_stock.action_stock_transfer_purchase" sequence="2"/>
+	</data>
+</odoo>
+

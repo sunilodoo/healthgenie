@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_products,import.products,model_import_products,base.group_user,1,1,1,1
+access_sku_mapping,sku.mapping,model_sku_mapping,base.group_user,1,1,1,1
+access_product_brand,product.brand,model_product_brand,base.group_user,1,1,1,1
+access_export_products,export.products,model_export_products,base.group_user,1,1,1,1
+access_product_category1,product.category1,model_product_category1,base.group_user,1,1,1,1
+access_product_category2,product.category2,model_product_category2,base.group_user,1,1,1,1
+access_product_category3,product.category3,model_product_category3,base.group_user,1,1,1,1
+access_product_package,product.package,model_product_package,base.group_user,1,1,1,1
+access_product_type,product.type,model_product_type,base.group_user,1,1,1,1

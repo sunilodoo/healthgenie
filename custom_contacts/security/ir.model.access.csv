@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pincode_state,pincode.state,model_pincode_state,base.group_user,1,1,1,1
+access_import_pincode,import.pincode,model_import_pincode,base.group_user,1,1,1,1
+access_res_portal,res.portal,model_res_portal,base.group_user,1,1,1,1
+access_sales_payment,sales.payment,model_sales_payment,base.group_user,1,1,1,1
+access_sales_payment_report,sales.payment.report,model_sales_payment_report,base.group_user,1,1,1,1

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_import,sale.order.import,model_sale_order_import,base.group_user,1,1,1,1
+access_b2b_sale_order_report,b2b.sale.order.report,model_b2b_sale_order_report,base.group_user,1,1,1,1
+access_b2c_sale_order_report,b2c.sale.order.report,model_b2c_sale_order_report,base.group_user,1,1,1,1
+access_sale_order_missing,sale.order.missing,model_sale_order_missing,base.group_user,1,1,1,1
+access_sale_payment,sale.payment,model_sale_payment,base.group_user,1,1,1,1

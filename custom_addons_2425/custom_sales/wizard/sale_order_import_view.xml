@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_import_view" model="ir.ui.view">
+            <field name="name">sale.order.import.wizard</field>
+            <field name="model">sale.order.import</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order Import">
+                    <group>
+                        <!-- <field name="order_b2b_b2c" required="1"/> -->
+                        <field name="order_file" required="1"/>
+                        <field name="month_of_sale"/>
+                    </group>
+                    <footer>
+                        <button name="do_import" string="Import Order" type="object" class="btn-primary"/>
+                        <!-- <button name="gst_mtr_b2b_warehouse_update" string="GST MTR B2B W/H Update" type="object" class="btn-primary"/> -->
+                        <!-- <button name="gst_mtr_b2c_warehouse_update" string="GST MTR B2C W/H Update" type="object" class="btn-primary"/> -->
+                        <!-- <button name="shipment_warehouse_update" string="Shipment File W/H Update" type="object" class="btn-primary"/> -->
+                        or
+                        <!-- <button name="states_sku_check" string="States_Pincode_SKU_Check" type="object" class="btn-primary"/> -->
+                        <!-- <button name="warehouse_check_gst_mtr_b2b" string="Warehouse_Check(GST_MTR B2B)" type="object" class="btn-primary"/> -->
+                        <!-- <button name="warehouse_check_gst_mtr_b2c" string="Warehouse_Check(GST_MTR B2C)" type="object" class="btn-primary"/> -->
+                        <!-- <button name="warehouse_check_shipment" string="Warehouse_Check(Shipment)" type="object" class="btn-primary"/> -->
+                        <!-- <button name="update_M_O_S" string="Update MoS" type="object" class="btn-primary"/> -->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        <!-- <button name="action_confirm_so" string="Order Confirm" type="object" class="btn-primary"/> -->
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_sale_order_wizard" model="ir.actions.act_window">
+            <field name="name">Import Sale Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.import</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sale_order_import_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_sale_order_import" name="B2B/B2C Sale Order Import" parent="sale.sale_order_menu" sequence="5" action="action_view_sale_order_wizard"/>
+
+        <record id="action_confirm_sale_order" model="ir.actions.server">
+            <field name="name">Confirm Sale Order</field>
+            <!-- <field name="type">ir.actions.server</field> -->
+            <field name="model_id" ref="custom_sales.model_sale_order_import"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_confirm_so()</field>
+        </record>
+        <menuitem id="menu_sale_order_confirm" name="Sale Order Confirm" parent="sale.sale_order_menu" sequence="6" action="action_confirm_sale_order"/>
+
+        <!-- <record id="action_create_invoive_sale_order" model="ir.actions.server">
+            <field name="name">Create Invoices</field>
+            <field name="model_id" ref="custom_sales.model_sale_order_import"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_create_invoice_so()</field>
+        </record>
+        <menuitem id="menu_create_invoice" name="Create Invoice" parent="sale.sale_order_menu" sequence="7" action="action_create_invoive_sale_order"/> -->
+    </data>
+</odoo>

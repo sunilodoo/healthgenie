@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="custom_stock_form_view" model="ir.ui.view">
+			<field name="name">stock.warehouse.form.custom</field>
+			<field name="model">stock.warehouse</field>
+			<field name="inherit_id" ref="stock.view_warehouse"/>
+			<field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+            		<!-- <field name="fs"/> -->
+            		<field name="inv_code"/>
+            		<field name="b2b_code"/>
+            		<field name="next_number_so_f"/>
+            		<field name="next_number_so_o" required="1"/>
+            		<field name="next_number_inv_f" required="1"/>
+            		<field name="next_number_inv_o" required="1"/>
+            		<field name="stock_tranfer_code" required="1"/>
+            		<field name="next_number_s_t_s" required="1"/>
+            		<field name="next_number_s_t_p" required="1"/>
+            		<field name="country_id" placeholder="Country"/>
+            		<field name="rto_b2b" required="1"/>
+            		<field name="rto_b2c" required="1"/>
+            		<field name="state_id" placeholder="State"/>
+            		<!-- <field name="food_enabled" placeholder="Food Enabled"/> -->
+            		<!-- <field name="hb_mps"/> -->
+            		<!-- <field name="fc_into_gst" placeholder="FC added into our GST"/> -->
+            		<field name="buiding" placeholder="Buiding"/>
+            		<field name="road" placeholder="Road"/>
+            		<field name="city" placeholder="City"/>
+            		<field name="district" placeholder="District"/>
+            		<field name="pincode" placeholder="Pincode"/>
+            		<field name="tin" placeholder="TIN No."/>
+            		<field name="ownership" placeholder="Ownership"/>
+            		<field name="gstin" placeholder="GSTIN"/>
+                </xpath>
+			</field>
+		</record>
+
+
+        <record id="custom_stock_tree_view" model="ir.ui.view">
+			<field name="name">stock.warehouse.tree.custom</field>
+			<field name="model">stock.warehouse</field>
+			<field name="inherit_id" ref="stock.view_warehouse_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+                	<field name="code"/>
+                	<!-- <field name="fs"/> -->
+            		<field name="inv_code"/>
+            		<field name="b2b_code"/>
+            		<field name="next_number_so_f"/>
+            		<field name="next_number_so_o" required="1"/>
+            		<field name="next_number_inv_f" required="1"/>
+            		<field name="next_number_inv_o" required="1"/>
+            		<field name="stock_tranfer_code" required="1"/>
+            		<field name="next_number_s_t_s" required="1"/>
+            		<field name="next_number_s_t_p" required="1"/>
+                	<field name="country_id"/>
+                	<field name="state_id"/>
+                	<!-- <field name="food_enabled"/> -->
+                	<!-- <field name="hb_mps"/> -->
+                	<!-- <field name="fc_into_gst"/> -->
+                	<field name="buiding"/>
+                	<field name="road"/>
+                	<field name="city"/>
+                	<field name="district"/>
+                	<field name="pincode"/>
+                	<field name="tin"/>
+                	<field name="ownership" placeholder="Ownership"/>
+                	<field name="gstin"/>
+            	</xpath>
+            </field>
+        </record>
+	</data>
+</odoo>
+

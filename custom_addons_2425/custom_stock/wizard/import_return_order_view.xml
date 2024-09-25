@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record id="import_return_order_wizard" model="ir.ui.view">
+      <field name="name">import.return.order.form</field>
+      <field name="model">import.return.order</field>
+      <field name="arch" type="xml">
+        <form string="Import Return Order">
+            <group>
+              <field name="return_order_file" required="1"/>
+              <field name="month_of_return" required="1"/>
+            </group>
+          <footer>
+            <button name="import_rto" string="Import RTO" type="object" class="btn-primary" />
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_import_return_order" model="ir.actions.act_window">
+      <field name="name">Import Return Order</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.return.order</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="import_return_order_wizard"/>
+      <field name="target">new</field>
+    </record>
+
+    
+    <record id="action_confirm_return_order" model="ir.actions.server">
+            <field name="name">Confirm Return Order</field>
+            <!-- <field name="type">ir.actions.server</field> -->
+            <field name="model_id" ref="custom_stock.model_import_return_order"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_confirm()</field>
+            <!-- <field name="code">action = model.action_confirm_return_2023_05_30()</field> -->
+    </record>
+
+      <menuitem id="menu_import_return_order" name="Import Return Order" parent="custom_stock.menu_return_order" action="custom_stock.action_import_return_order" sequence="2"/>
+
+    <menuitem id="menu_return_order_confirm" name="Return Order Confirm" parent="custom_stock.menu_return_order" sequence="3" action="custom_stock.action_confirm_return_order"/>
+
+  </data>
+</openerp>

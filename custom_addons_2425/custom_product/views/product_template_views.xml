@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="custom_product_template_form_view" model="ir.ui.view">
+			<field name="name">custom.product.template.form</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view"/>
+			<field name="arch" type="xml">
+            	<xpath expr="//field[@name='barcode']" position="after">
+                	<field name="categ1"/>
+                	<field name="categ2"/>
+                	<field name="categ3"/>
+					<field name="model_no"/>
+					<field name="model_name"/>
+					<field name="product_type"/>
+					<field name="product_material"/>
+					<field name="supplier_name"/>
+					<field name="product_box_dimension_l"/>
+					<field name="product_box_dimension_b"/>
+					<field name="product_box_dimension_h"/>
+					<field name="prod_box_grs_wt_kgs"/>
+					<field name="prod_box_net_wt_kgs"/>
+					<field name="carton"/>
+            	</xpath>
+            	<xpath expr="//field[@name='company_id']" position="after">
+                	<field name="brand_id"/>
+                	<field name="p_prepartion_id"/>
+                	<field name="sale_type"/>
+					<field name="mc_dimm_l_cms"/>
+					<field name="mc_dimm_b_cms"/>
+					<field name="mc_dimm_h_cms"/>
+					<field name="mc_Grs_wt_l_kgs"/>
+                	<field name="mc_net_wt_kgs"/>
+                	<field name="mc_vol_cbm"/>
+            	</xpath>
+			</field>
+		</record>
+		<record id="custom_product_template_tree_view" model="ir.ui.view">
+			<field name="name">custom.product.template.tree</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_tree_view"/>
+			<field name="arch" type="xml">
+            	<xpath expr="//field[@name='default_code']" position="after">
+				  	<field name="product_type"/>
+					<field name="model_no"/>
+					<field name="model_name"/>
+					<field name="product_material"/>
+					<field name="supplier_name"/>
+                	<field name="l10n_in_hsn_code"/>
+                	<field name="taxes_id"/>
+                	<field name="brand_id"/>
+                	<field name="p_prepartion_id"/>
+                	<field name="sale_type"/>
+                	<!-- <field name="product_variant_id"/> -->
+                	<field name="invoice_policy"/>
+            	</xpath>
+            	<xpath expr="//field[@name='supplier_name']" position="after">
+                	<field name="categ1"/>
+                	<field name="categ2"/>
+                	<field name="categ3"/>
+            	</xpath>
+			</field>
+		</record>
+
+		<record id="custom_product_product_form_view" model="ir.ui.view">
+			<field name="name">custom.product.product.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view"/>
+			<!-- <field name="mode">primary</field> -->
+			<field name="arch" type="xml">
+            	<xpath expr="//field[@name='barcode']" position="after">
+					<field name="categ3"/>
+					<field name="categ1" invisible="1"/>
+                	<field name="categ2"/>
+					<field name="model_no"/>
+					<field name="model_name"/>
+					<field name="type_of_product"/>
+					<field name="product_material"/>
+					<field name="supplier_name"/>
+					<field name="product_box_dimension_l"/>
+					<field name="product_box_dimension_b"/>
+					<field name="product_box_dimension_h"/>
+					<field name="prod_box_grs_wt_kgs"/>
+					<field name="prod_box_net_wt_kgs"/>
+					<field name="carton"/>
+<!--					<field name="product_asin"/>-->
+					<field name="product_specification"/>
+                	<field name="brand_id"/>
+                	<field name="p_prepartion_id"/>
+                	<field name="sale_type"/>
+                	<!-- <field name="taxes_id"/> -->
+            	</xpath>
+				<xpath expr="//field[@name='company_id']" position="after">
+						<field name="brand_id"/>
+						<field name="p_prepartion_id"/>
+						<field name="sale_type"/>
+						<field name="mc_dimm_l_cms"/>
+						<field name="mc_dimm_b_cms"/>
+						<field name="mc_dimm_h_cms"/>
+						<field name="mc_Grs_wt_l_kgs"/>
+						<field name="mc_net_wt_kgs"/>
+						<field name="mc_vol_cbm"/>
+					</xpath>
+				<xpath expr="//field[@name='default_code']" position="replace">
+					<field name="default_code" string="SKU ID"/>
+				</xpath>
+				<xpath expr="//field[@name='categ_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+
+			</field>
+		</record>
+
+
+		<record id="custom__product_template_filter_view" model="ir.ui.view">
+            <field name="name">custom.product.template.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="default_code"/>
+                    <!-- <field name="l10n_in_hsn_code"/> -->
+                </xpath>
+            </field>
+        </record>
+        <record id="custom__product_product_filter_view" model="ir.ui.view">
+            <field name="name">custom.product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="default_code"/>
+                    <field name="l10n_in_hsn_code"/>
+                </xpath>
+            </field>
+        </record>
+
+		<record id="product_product_tree_view_inh" model="ir.ui.view">
+			<field name="name">product.product.product.tree.inh</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_product_tree_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name="type_of_product"/>
+					<field name="categ2"/>
+					<field name="categ3"/>
+					<field name="model_no"/>
+					<field name="model_name"/>
+					<field name="product_material"/>
+					<field name="l10n_in_hsn_code"/>
+					<field name="taxes_id"/>
+					<field name="brand_id"/>
+					<field name="p_prepartion_id"/>
+					<field name="sale_type"/>
+					<field name="product_box_dimension_l"/>
+					<field name="product_box_dimension_b"/>
+					<field name="product_box_dimension_h"/>
+					<field name="mc_dimm_l_cms"/>
+					<field name="mc_dimm_b_cms"/>
+					<field name="mc_dimm_h_cms"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_sale_form_view" model="ir.ui.view">
+            <field name="name">Invoice Orders Inherit</field>
+            <field name="model">sale.advance.payment.inv</field>
+            <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+            <field name="arch" type="xml">
+                <xpath expr="//footer" position="inside">
+                    <button name="action_create_invoice_so" id="create_invoice_open" string="Create All Invoices" type="object"
+                            context="{'open_invoices': True}" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

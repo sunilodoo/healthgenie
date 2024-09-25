@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="sku_mapping_form_view" model="ir.ui.view">
+            <field name="name">sku.mapping.form</field>
+            <field name="model">sku.mapping</field>
+            <field name="arch" type="xml">
+            	<form string="SKU Mapping">
+            		<group>
+	                	<field name="name"/>
+	                	<field name="product_id"/>
+                     <field name="pro_pro_id"/>
+                    <field name="default_code"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="portal_id_type"/>
+	                	<field name="id_number"/>
+	                </group>
+            	</form>
+			</field>
+		</record>
+
+		<record id="sku_mapping_tree_view" model="ir.ui.view">
+            <field name="name">sku.mapping.tree</field>
+            <field name="model">sku.mapping</field>
+            <field name="arch" type="xml">
+            	<tree string="SKU Mapping">
+                	<field name="name"/>
+                	<field name="product_id"/>
+                  <field name="default_code"/>
+                  <field name="product_tmpl_id"/>
+                  <field name="portal_id_type"/>
+                	<field name="id_number"/>
+            	</tree>
+			</field>
+		</record>
+    <record id="sku_mapping_filter_view" model="ir.ui.view">
+            <field name="name">sku.mapping.search</field>
+            <field name="model">sku.mapping</field>
+            <!-- <field name="inherit_id" ref="product.product_template_search_view"/> -->
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+              <search string="SKU">
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="default_code"/>
+                    <filter string="Portal Type" name="portal_id_type" domain="[]" context="{'group_by': 'portal_id_type'}"/>
+                    <field name="id_number"/>
+              </search>
+            </field>
+        </record>
+
+		<record id="action_sku_mapping" model="ir.actions.act_window">
+            <field name="name">SKU Mapping</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sku.mapping</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('invoice_status','=','upselling')]</field> -->
+            <!-- <field name="context">{'create': True}</field> -->
+            <!-- <field name="search_view_id" ref="view_sales_order_filter"/> -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No SKU Mapping Records are found.</p>
+            </field>
+        </record>
+        <menuitem id="menu_sku_mapping" parent="sale.product_menu_catalog" action="custom_product.action_sku_mapping" sequence="7"/>
+	</data>
+</odoo>
+

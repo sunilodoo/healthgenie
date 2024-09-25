@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="pincode_state_form_view" model="ir.ui.view">
+            <field name="name">pincode.state.form</field>
+            <field name="model">pincode.state</field>
+            <field name="arch" type="xml">
+            	<form string="Pincode With State">
+            		<group>
+	                	<field name="name"/>
+	                	<field name="district"/>
+	                  	<field name="country_id"/>
+	                  	<field name="state_id"/>
+	                </group>
+            	</form>
+			</field>
+		</record>
+
+		<record id="pincode_state_tree_view" model="ir.ui.view">
+            <field name="name">pincode.state.tree</field>
+            <field name="model">pincode.state</field>
+            <field name="arch" type="xml">
+            	<tree string="Pincode With State">
+                	<field name="name"/>
+                	<field name="district"/>
+                  	<field name="country_id"/>
+                  	<field name="state_id"/>
+            	</tree>
+			</field>
+		</record>
+
+		<record id="action_pincode_state" model="ir.actions.act_window">
+            <field name="name">Pincode With State</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pincode.state</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('invoice_status','=','upselling')]</field> -->
+            <!-- <field name="context">{'create': True}</field> -->
+            <!-- <field name="search_view_id" ref="view_sales_order_filter"/> -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Pincode with State Records are found.</p>
+            </field>
+        </record>
+        <menuitem id="menu_pincode_state" parent="contacts.menu_contacts" action="custom_contacts.action_pincode_state" sequence="3"/>
+	</data>
+</odoo>

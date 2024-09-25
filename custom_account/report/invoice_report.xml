@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <template id="report_invoiceb2b"  >
+		<!--<t t-foreach="range(3)" t-as="rang">-->
+    	<t-call id="external_layout_footer">
+        <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row">
+                        <table class="table table-bordered" style="page-break-inside: avoid; ">
+							<tr>
+								<td colspan="12" class="text-center">
+									<div class="col-xs-2" style="float:left">
+										<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="height: 100px; width: 200px;"/>
+										<!-- <img t-if="res_company.hd_image" t-att-src="'data:image/png;base64,%s' % res_company.hd_image" style="height: 100px; width: 200px;"/> -->
+									</div>
+									<div class="col-xs-8" style="float:left">
+									<h3 style="margin-top:10px;">Tax Invoice</h3>
+									 <p style="font-size: 12 px;font-color:white; margin:0;">
+						                <h2 style="margin-top:10px;"><t t-esc="o.company_id.name"/></h2><br/>
+						                <!-- <h2 style="margin-top:10px;"><t t-esc="o.po_id.src_location.location_name"/></h2><br/> -->
+										<t t-esc="o.company_id.street"/>, <t t-esc="o.company_id.street2"/><t t-esc="o.company_id.city"/>- <t t-esc="o.company_id.zip"/><br/>
+										<t t-if="'Haryana' in o.company_id.city">Tel. No- 0124-4240095 Email ID - store@healthgenie.in, Mobile- 8800225543</t><t t-if="'Delhi' in o.company_id.city">Tel. No- 011-48323232 Email ID - accounts1@healthgenie.in, Mobile- 8800445888</t><br/>
+										<strong>GSTIN No - <t t-esc="o.company_id.vat"/></strong>
+						             </p>
+						             <!-- <p style="font-size: 12 px;font-color:white; margin:0;">
+						                <h2 style="margin-top:10px;"><t t-esc="o.po_id.src_location.location_name"/></h2><br/>
+										<t t-esc="o.po_id.src_location.street"/>, <t t-esc="o.po_id.src_location.street2"/><t t-esc="o.po_id.src_location.city"/>- <t t-esc="o.po_id.src_location.zip"/><br/>
+										<t t-if="'Haryana' in o.po_id.src_location.city">Tel. No- 0124-4240095 Email ID - store@healthgenie.in, Mobile- 8800225543</t><t t-if="'Delhi' in o.po_id.src_location.city">Tel. No- 011-48323232 Email ID - accounts1@healthgenie.in, Mobile- 8800445888</t><br/>
+										<strong>GSTIN No - <t t-esc="o.po_id.src_location.gstn_no"/></strong>
+						             </p> -->
+									</div>
+								</td>
+								<td colspan="2">
+									<div>
+										<!--<t t-if="rang == 0">
+											<input type="checkbox" checked='True'> &#160;&#160;Original</input><br/><br/>
+											<input type="checkbox"> &#160;&#160;Duplicate</input><br/><br/>
+											<input type="checkbox"> &#160;&#160;Triplicate</input>
+										</t>
+  										<t t-if="rang == 1">
+											<input type="checkbox"> &#160;&#160;Original</input><br/><br/>
+											<input type="checkbox" checked='True'> &#160;&#160;Duplicate</input><br/><br/>
+											<input type="checkbox"> &#160;&#160;Triplicate</input>
+										</t>
+  										<t t-if="rang == 2">
+											<input type="checkbox"> &#160;&#160;Original</input><br/><br/>
+											<input type="checkbox"> &#160;&#160;Duplicate</input><br/><br/>
+											<input type="checkbox" checked='True'> &#160;&#160;Triplicate</input>
+										</t>-->
+										<input type="checkbox"> &#160;&#160;Original</input><br/><br/>
+										<input type="checkbox"> &#160;&#160;Duplicate</input><br/><br/>
+										<input type="checkbox"> &#160;&#160;Triplicate</input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="7" width="400cm">
+									 <p style="font-size: 13px;font-color:white; margin:0;">
+						                <strong>Invoice Number:    <span t-field="o.invoice_number"/> </strong>
+						             </p>
+
+									 <p style="font-size: 13px;font-color:white; margin:0;">
+						                <strong>Invoice Date:    <span t-field="o.invoice_date" t-field-options="{&quot;format&quot;: &quot;dd-MMM-yyyy&quot;}"/> </strong>
+						             </p>
+									 <p  style="font-size: 13px;font-color:white; margin:0;">
+						                <strong>PO Number:    <span t-field="o.company_id.name"/> </strong>
+						             </p>
+
+						             <p  style="font-size: 13px;font-color:white; margin:0;">
+						                <strong>Buyer PO Number: <span t-field="o.partner_po_no"/> </strong>
+						             </p>
+
+									 <p style="font-size: 13px;font-color:white; margin:0px;">
+						                <strong>State: <span t-field="o.company_id.state_id.name"/> </strong>
+						             </p>
+						   
+									 <p class="text-right" style="font-size: 13px;font-color:white; margin-top:-85px;">
+						                <strong>Buyer's Inv.: <span t-field="o.buyer_invoice_nr"/> </strong>
+						             </p>
+
+									<p class="text-right" style="font-size: 13px;font-color:white; margin-top:-10px;">
+						                <strong>Buyer's Inv. Date: <span t-field="o.buyer_invoice_dt" t-field-options="{&quot;format&quot;: &quot;dd-MMM-yyyy&quot;}"/> </strong>
+						             </p>
+
+									 <p class="text-right" style="font-size: 13px;font-color:white; margin:-10px;">
+						                <strong>Payment Term: <span t-field="o.payment_term"/> </strong>
+						             </p>
+
+						             <p class="text-right" style="font-size: 13px;font-color:white; margin:8px;">
+						                <strong>State Code: <span t-field="o.company_id.state_id.govt_code"/> </strong>
+						             </p>
+								</td>
+								<td colspan="7" class="text-left">
+									<p style="font-size: 13px;font-color:white; margin:0;">
+									<strong>E-Way Bill No.: <span t-field="o.eway_bill"/> </strong>
+						             </p>
+									<p style="font-size: 13px;font-color:white; margin:0;">
+									<strong>Transporter: <span t-field="o.transport_id.name"/> </strong>
+						             </p>
+                                    
+                                    <p style="font-size: 13px;font-color:white; margin:0;">
+						             <strong>Date of Supply: <span t-field="o.supply_date"/> </strong>
+						             </p>
+                                    
+                                    <p style="font-size: 13px;font-color:white; margin:0;">
+						             <strong>Place of Supply: <span t-field="o.partner_id.b2b_ship_state.name"/> </strong>
+						             </p>
+								</td>
+								
+							</tr>
+						    <tr>
+								<td colspan="7" class="text-left">
+									<strong>Billed To</strong>
+								</td>
+								<td colspan="7" class="text-left">
+									<strong>Shipped To</strong>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="7" class="text-left">
+									 <p style="font-size: 13px;font-color:white; margin:0;">
+						                <strong>    <span t-field="o.po_id.b2b_partner.name"/> </strong><br/>
+										<span t-field="o.partner_id.supp_service_code"/>
+										<span t-field="o.partner_id.supp_address_line"/><br/>
+										<span t-field="o.partner_id.supp_city"/>
+										<span t-field="o.partner_id.supp_state_id.name"/>
+										<span t-field="o.partner_id.supp_post_code"/>
+										<span t-field="o.partner_id.supp_country_id.name"/>
+						             </p>
+
+						             <!--<p style="font-size: 9.5 px;font-color:white; margin:0;">
+						             <strong>CST No: <span t-field="o.partner_id.gstn_no"/> </strong>
+						             </p>-->
+
+						             <p style="font-size: 13px;font-color:white; margin:0;">
+						             <strong>GSTIN: <span t-field="o.partner_id.gstn_no"/> </strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>Contact: <span t-field="o.bill_person_name"/> </strong>
+						             </p>
+
+									 <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>Contact No: <span t-field="o.partner_id.telephone_number"/> </strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>State Code: <span t-field="o.partner_id.supp_state_id.govt_code"/></strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>State: <span t-field="o.partner_id.supp_state_id.name"/> </strong>
+						             </p>
+								</td>
+								<td colspan="7" class="text-left">
+									 <p style="font-size: 13px;font-color:white; margin:0;">
+						               <strong>    <span t-field="o.po_id.b2b_partner.name"/> </strong><br/>
+										<span t-field="o.partner_id.b2b_ship_street"/>
+										<span t-field="o.partner_id.b2b_ship_street2"/><br/>
+										<span t-field="o.partner_id.b2b_ship_city"/>
+										<span t-field="o.partner_id.b2b_ship_state.name"/>
+										<span t-field="o.partner_id.b2b_ship_zip"/>
+										<span t-field="o.partner_id.b2b_ship_country.name"/>
+						             </p>
+
+                                     <!--<p style="font-size: 9.5 px;font-color:white; margin:0;">
+						             <strong>CST No: <span t-field="o.partner_id.gstn_no"/> </strong>
+						             </p>-->
+
+						             <p style="font-size: 13px;font-color:white; margin:0;">
+						             <strong>GSTIN: <span t-field="o.partner_id.gstn_no"/> </strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>Contact: <span t-field="o.ship_person_name"/> </strong>
+						             </p>
+							
+									 <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>Contact No: <span t-field="o.partner_id.mobile"/> </strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0;">
+						             <strong>State Code: <span t-field="o.partner_id.b2b_ship_state.govt_code"/> </strong>
+						             </p>
+
+						             <p style="font-size: 13px;font-color:white; margin:0px;">
+						             <strong>State: <span t-field="o.partner_id.b2b_ship_state.name"/> </strong>
+						             </p>
+								</td>
+							</tr>
+							<tr style="font-size: 11px;page-break-inside: avoid; font-size: 11px;">
+								<th width="25cm">SL No.</th>
+								<th width="1000cm" colspan='1'>Name of the Product</th>
+								<th width="10cm">ASIN</th>
+								<th width="15cm">Product ID</th>
+								<th width="50cm">HSN Code</th>
+								<th width="15cm" class="text-right">Qty</th>
+								<th width="15cm">Unit</th>
+								<th width="50cm" class="text-right">Items Rate</th>
+								<th width="50cm" class="text-right">Taxable Amount</th>
+								<th width="50cm">Tax Rate</th>
+								<th width="50cm" class="text-right">CGST Tax</th>
+								<th width="50cm" class="text-right">SGST Tax</th>
+								<th width="50cm" class="text-right">IGST Tax</th>
+								<th width="50cm" class="text-right">Total Amount</th>
+								<!--<th class="hidden"></th>-->
+							</tr>
+							<t t-set="i" t-value="0"/>
+							<t t-set="qty" t-value="0"/>
+							<t t-set="amnt" t-value="0"/>
+							<t t-set="amnt1" t-value="0"/>
+							<t t-set="ctx" t-value="0"/>
+							<t t-set="stx" t-value="0"/>
+							<t t-set="itx" t-value="0"/>
+							<t t-set="gdt" t-value="0"/>
+							<tr t-foreach="o.invoice_line" t-as="l" style="page-break-inside: avoid; font-size: 11px;">
+								<t t-if="l.quantity &gt; 0">
+								<td width="25cm"><t t-set="i" t-value="i + 1"/><t t-esc="i"/></td>
+								<td width="1000cm" colspan='1' style="vertical-align: middle;"><t t-esc="l.product_id.name"/></td>
+								<td width="10cm" style="vertical-align: middle;"><t t-esc="l.asin"/></td>
+								<td width="15cm">
+									<t t-esc="l.product_id.magento_id"/>
+								</td>
+								<td width="50cm"><t t-esc="l.product_id.hsn_code.name[4:]"/></td>
+								<td width="15cm" class="text-right"><t t-set="qty" t-value="qty + l.quantity"/><t t-esc="int(l.quantity)"/></td>
+								<td width="15cm"><t t-esc="l.uos_id.name"/></td>
+								<td width="50cm" class="text-right"><t t-esc="l.price_unit" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td width="50cm" class="text-right"><t t-set="amnt1" t-value="amnt1 + l.price_unit * l.quantity"/><t t-set="amnt" t-value="l.price_unit * l.quantity"/><t t-esc="amnt" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td width="50cm" class="text-right">
+									<t t-set="xxxx" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'CGST' in xxxx">
+										<t t-esc="int(2*float(((l.invoice_line_tax_id[0].name).split(' ')[1]).split('%')[0]))"/>%
+									</t>
+
+									<t t-set="xxxx" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'IGST' in xxxx">
+										<t t-esc="int(((l.invoice_line_tax_id[0].name).split(' ')[1]).split('%')[0])"/>%
+									</t>
+								</td>
+								<td width="50cm" class="text-right"><t t-set="a" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'CGST' in a"><t t-set="ctx" t-value="ctx + (l.invoice_line_tax_id[0].amount * amnt)"/><t t-esc="(l.invoice_line_tax_id[0].amount * amnt)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></t><t t-if="'CGST' not in a">0.00</t></td>
+								<td width="50cm" class="text-right"><t t-set="a" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'SGST' in a"><t t-set="stx" t-value="stx + (l.invoice_line_tax_id[0].amount * amnt)"/><t t-esc="(l.invoice_line_tax_id[0].amount * amnt)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></t><t t-if="'SGST' not in a">0.00</t></td>
+								<td width="50cm" class="text-right"><t t-set="a" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'IGST' in a"><t t-set="itx" t-value="itx + (l.invoice_line_tax_id[0].amount * amnt)"/><t t-esc="l.invoice_line_tax_id[0].amount * amnt" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></t><t t-if="'IGST' not in a">0.00</t></td>
+
+								
+								<td width="50cm" class="text-right"><t t-set="xx" t-value="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/><t t-if="'IGST' in xx"><t t-set="gdt" t-value="gdt + (l.price_subtotal + l.invoice_line_tax_id[0].amount * amnt)"/><t t-esc="l.price_subtotal + l.invoice_line_tax_id[0].amount * amnt" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></t><t t-if="'CGST' in xx"><t t-set="gdt" t-value="gdt + (l.price_subtotal + (l.invoice_line_tax_id[0].amount)*2 * amnt)"/><t t-esc="l.price_subtotal + (l.invoice_line_tax_id[0].amount)*2 * amnt" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></t></td>
+								<td class="hidden"></td>
+								</t>
+							</tr>
+							<tr>
+								<th colspan="5" class="text-right">Total</th>
+								<td class="text-right"><t t-esc="int(qty)"/></td>
+								<td></td>
+								<td></td>
+								<td class="text-right"><t t-esc="amnt1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td></td>
+								<td class="text-right"><t t-esc="ctx" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td class="text-right"><t t-esc="stx" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td class="text-right"><t t-esc="itx" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<td class="text-right"><t t-esc="gdt + o.packing_insur" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="7"><strong>Total(In Words):</strong><br/>	<span t-esc="str(o.amount_to_text(round(o.amount_total + o.packing_insur))).capitalize() + ' Rupees Only'"/></td>
+								<th colspan="6">Total Amount Before Tax:</th>
+								<td class="text-right"><t t-esc="amnt1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td rowspan="6" colspan="7" >
+									<div class="col-xs-12 mt16">
+										<t t-if="o.no_of_boxes"><strong>Total No. of Boxes: <t t-esc="o.no_of_boxes"/></strong></t>
+										<table class="table table-bordered mt16">
+											<tr >
+												<th>Tax Summary</th>
+												<th class="text-center">0%</th>
+												<th class="text-center">5%</th>
+												<th class="text-center">12%</th>
+												<th class="text-center">18%</th>
+												<th class="text-center">28%</th>
+											</tr>
+											<tr >
+												<th>Taxable Amount</th>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 0 ">
+														<span t-esc="get_line(o)[0]['a'] + o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['a']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 5">
+														<span t-esc="get_line(o)[0]['b']  + o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['b']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 12">
+														<span t-esc="get_line(o)[0]['c'] + o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['c']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 18">
+														<span t-esc="get_line(o)[0]['d']  + o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['d']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 28">
+														<span t-esc="get_line(o)[0]['e'] + o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['e']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+											</tr>
+											<tr >
+												<th>Tax Amount</th>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 0 ">
+														<span t-esc="get_line(o)[0]['a1'] + (o.shipping_charg - o.shipping_charg1)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['a1']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 5">
+														<span t-esc="get_line(o)[0]['b1'] + (o.shipping_charg - o.shipping_charg1)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['b1']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 12">
+														<span t-esc="get_line(o)[0]['c1'] + (o.shipping_charg - o.shipping_charg1)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['c1']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 18">
+														<span t-esc="get_line(o)[0]['d1'] + (o.shipping_charg - o.shipping_charg1)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['d1']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+												<td class="text-right">
+													<t t-if="o.shipping_charg1 > 0 and o.max_tax == 28">
+														<span t-esc="get_line(o)[0]['e1'] + (o.shipping_charg - o.shipping_charg1)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+													<t t-if="o.shipping_charg1 == 0">
+														<span t-esc="get_line(o)[0]['e1']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+													</t>
+												</td>
+											</tr>
+									</table>
+									  	<strong>Terms &amp; Conditions:</strong><br/>
+									  	<p t-field="o.comment"/>
+									 </div>
+								</td>
+								<td colspan="6">Shipping Charges &amp; Other:</td>
+								<td class="text-right"><t t-esc="o.shipping_charg1" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="6">Tax Amount:</td>
+								<td class="text-right"><t t-esc="o.amount_tax" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="6">Round off:</td>
+								<td class="text-right">
+									<t t-if="float('.'+str(o.amount_total).split('.')[1]) >= 0.5">
+										<t t-esc="'{0:.2f}'.format(1 - float(str(o.amount_total-int(o.amount_total))[1:]))"/>  <t t-esc="o.company_id.currency_id.symbol"/>
+									</t>
+									<t t-if="float('.'+str(o.amount_total).split('.')[1]) &lt; 0.5">
+										<t t-esc="'-'+str('{0:.2f}'.format(float(str(o.amount_total-int(o.amount_total))[1:])))"/>  <t t-esc="o.company_id.currency_id.symbol"/>
+									</t>
+								</td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="6">Net Amount After Tax:</td>
+								<td class="text-right"><t t-esc="round(o.amount_total)" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="7" class="text-center" style="font-size:13px;width:50cm;">Certified that the particulars given above are true and correct</td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+							<tr>
+								<td colspan="7" class="text-center"><p><b>For Healthgenie India Private Limited</b></p> 
+									<img t-if="res_company.signature" t-att-src="'data:image/png;base64,%s' % res_company.signature" style="height: 50px; width: 90px;"/>
+								<p><b>Authorised Signatory</b></p></td>
+								<!--<td class="hidden"></td>-->
+							</tr>
+						</table>
+						<div><p class="text-center">This is Computer generated Invoice Signature Not Required</p></div>
+            		</div>
+        		</div>
+
+    		    <div class="footer">
+		          	<div class="text-right">        
+
+					<ul class="list-inline">
+					    <li>Page:</li>
+					    <li><span class="page"/></li>
+					    <li>/</li>
+					    <li><span class="topage"/></li>
+					</ul>
+				</div>
+			</div>
+		</t>
+	  </t>
+   	</t-call>
+	<!--</t>-->
+	</template>
+	<record id="invoice_paper_b2b" model="report.paperformat">
+		<field name="name">Custom format B2B INV</field>
+		<field name="default" eval="True"/>
+		<field name="format">custom</field>
+		<field name="page_height">320</field>
+		<field name="page_width">250</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">7</field>
+		<field name="margin_bottom">7</field>
+		<field name="margin_left">7</field>
+		<field name="margin_right">7</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">35</field>
+		<field name="dpi">90</field>
+	</record>
+	<!-- <record id="report_invoice_b2b" model="ir.actions.report.xml">
+		<field name="paperformat_id" ref="invoice_paper_b2b"/>
+	</record> -->
+	<!-- <report
+			id="report_invoice_b2b"
+			model="account.invoice"
+			string="B2B Invoice"
+			name="custom_account.report_invoiceb2b"
+			file="custom_account.report_invoiceb2b"
+			report_type="qweb-pdf"
+			attachment_use="True"/> -->
+	<record id="account_invoices_b2b" model="ir.actions.report">
+		<field name="name">B2B Invoice</field>
+		<field name="model">account.move</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_account.report_invoiceb2b</field>
+		<field name="report_file">custom_account.report_invoiceb2b</field>
+
+		<!-- <field name="print_report_name">(object._get_report_base_filename())</field> -->
+		<!-- <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')</field> -->
+		<field name="binding_model_id" ref="model_account_move"/>
+		<field name="binding_type">report</field>
+		<field name="attachment_use">True</field>
+		<field name="paperformat_id" ref="custom_account.invoice_paper_b2b"/>
+		<!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice')), (4, ref('account.group_account_readonly'))]"/> -->
+	</record>
+</data>
+</odoo>

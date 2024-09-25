@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record id="view_sales_payment_form" model="ir.ui.view">
+      <field name="name">sales.payment.form</field>
+      <field name="model">sales.payment</field>
+      <field name="arch" type="xml">
+        <form string="Import Sales Payment">
+            <group>
+              <field name="csv_file" required="1"/>
+              <!-- <field name="country_id" required="1"/>
+              <field name="state_id"/> -->
+            </group>
+          <footer>
+            <button name="import_payment" string="Import Sales Payment" type="object" class="btn-primary" />
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_import_sales_payment" model="ir.actions.act_window">
+      <field name="name">Import Payment</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sales.payment</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_sales_payment_form"/>
+      <field name="target">new</field>
+    </record>
+
+  <menuitem id="menu_import_sale_payment" parent="sale.menu_sale_report" action="custom_contacts.action_import_sales_payment" sequence="8"/>
+
+
+  
+  
+  <record id="view_sales_payment_reportgggggg" model="ir.ui.view">
+        <field name="name"></field>
+        <field name="model">sales.payment.report</field>
+        <field name="arch" type="xml">
+            <form string="Payment Report">
+                <p class="oe_grey">You want to Print Sales Payment Excel Report?</p>
+                <field name="flag" invisible="1"/>
+                <group attrs="{'invisible':[('flag','=',True)]}">
+                    <field name="month_of_sale"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <!-- <field name="invoice_state"/> -->
+                </group>
+                <group attrs="{'invisible':[('flag','=',False)]}">
+                    <field name="file_name" invisible="1" />
+                    <field name="file_xls" filename="file_name"/>
+                </group>
+                <footer>
+                    <button string="Print Excel Report" class="btn-primary" name="sale_payment_report" type="object" attrs="{'invisible':[('flag','=',True)]}"/>
+                 
+                    <button string="Cancel" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sales_payment_report" model="ir.actions.act_window">
+      <field name="name">Payment Report</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sales.payment.report</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_sales_payment_reportgggggg"/>
+      <field name="target">new</field>
+    </record>
+
+  <menuitem id="menu_sale_payment_report" parent="sale.menu_sale_report" action="custom_contacts.action_sales_payment_report" sequence="9"/>
+
+
+
+
+  </data>
+</openerp>

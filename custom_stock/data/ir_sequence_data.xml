@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Sequences for stock.transfer.sale -->
+        <record id="seq_stock_transfer_sale" model="ir.sequence">
+            <field name="name">Stock Tranfer Sale</field>
+            <field name="code">stock.transfer.sale</field>
+            <field name="prefix">21-22/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_stock_transfer_purchase" model="ir.sequence">
+            <field name="name">Stock Tranfer Purchase</field>
+            <field name="code">stock.transfer.purchase</field>
+            <field name="prefix">21-22/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

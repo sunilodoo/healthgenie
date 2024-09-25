@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record id="view_import_warehouse_form" model="ir.ui.view">
+      <field name="name">import.warehouse.form</field>
+      <field name="model">import.warehouse</field>
+      <field name="arch" type="xml">
+        <form string="Import Warehouse">
+            <group>
+              <field name="warehouse_file" required="1"/>
+            </group>
+          <footer>
+            <button name="import_warehouse" string="Import Warehouse" type="object" class="btn-primary" />
+            <!-- <button name="import_warehouse_state" string="Import Warehouse State" type="object" class="btn-primary" /> -->
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_import_warehouse" model="ir.actions.act_window">
+      <field name="name">Import Warehouse</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.warehouse</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_import_warehouse_form"/>
+      <field name="target">new</field>
+    </record>
+
+  <menuitem id="menu_import_warehouse" parent="stock.menu_stock_root" action="custom_stock.action_import_warehouse" sequence="105"/>
+  </data>
+</openerp>

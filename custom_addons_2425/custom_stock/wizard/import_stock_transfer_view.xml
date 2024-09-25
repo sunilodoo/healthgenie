@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record id="view_import_stock_transfer_form" model="ir.ui.view">
+      <field name="name">import.stock.transfer.form</field>
+      <field name="model">import.stock.transfer</field>
+      <field name="arch" type="xml">
+        <form string="Import Stock Transfer">
+            <group>
+              <field name="stock_transfer_file" required="1"/>
+              <field name="month_of_stock_trns" required="1"/>
+            </group>
+          <footer>
+            <button name="import_stock_transfer" string="Import Stock Transfer" type="object" class="btn-primary" />
+            <button name="stock_transfer_check" string="Stock Transfer Check" type="object" class="btn-primary" />
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_import_stock_transfer" model="ir.actions.act_window">
+      <field name="name">Import Stock Transfer</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">import.stock.transfer</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_import_stock_transfer_form"/>
+      <field name="target">new</field>
+    </record>
+
+  <menuitem id="menu_import_stock_transfer" parent="stock.menu_stock_root" action="custom_stock.action_import_stock_transfer" sequence="21"/>
+  </data>
+</openerp>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="return-order_form_view" model="ir.ui.view">
+            <field name="name">return.order.form</field>
+            <field name="model">return.order</field>
+            <field name="arch" type="xml">
+            	<form string="Return Order">
+                <sheet>
+                <group>
+                  <group>
+                    <div class="oe_title">
+                      <h1>
+                        <field name="name"/>
+                      </h1>
+                    </div>
+                    <field name="return_o_no" required="1"/>
+                    <field name="return_date"/>
+                    <field name="portal_order_id"/>
+                    <field name="asin"/>
+                    <field name="order_date"/>
+                    <field name="quntity"/>
+                    <field name="warehouse_id"/>
+                    <field name="month_of_return"/>
+                    <field name="return_reason"/>
+                    <field name="odoo_order_b2b"/>
+                    <field name="odoo_order_b2c"/>
+	                	<field name="sale_order_id"/>
+                    <field name="invoice_order_id"/>
+                    <field name="from_warehouse_id"/>
+                    <field name="state"/>
+                    <field name="default_code"/>
+                    <field name="product_product_id"/>
+                    <field name="product_cat"/>
+                    
+                    <field name="partner_name"/>
+                    <field name="partner_city"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <field name="partner_zip_code"/>
+                    <field name="order_category" radonly="1"/>
+                    <field name="partner_vat"/>
+                    <field name="sale_number"/>
+                    <field name="sale_number_b2b"/>
+                    <field name="invoice_date"/>
+                    <field name="original_order_id"/>
+                  </group>
+                  <group>
+                    <field name="invoice_line_id"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="price_unit"/>
+                    <field name="price_subtotal"/>
+                    <field name="price_total"/>
+                    <field name="tax_ids"/>
+                    <field name="company_id"/>
+                    <field name="product_hsn"/>
+                    <field name="portal_price"/>
+
+                    <field name="shipping_charges"/>
+                    <field name="gift_wrap_price"/>
+                    <field name="item_promo_discount"/>
+
+                    <field name="sgst_rate"/>
+                    <field name="sgst_amount"/>
+                    <field name="cgst_rate"/>
+                    <field name="cgst_amount"/>
+                    <field name="igst_rate"/>
+                    <field name="igst_amount"/>
+                    <field name="tax_sum"/>
+                    <field name="price_tax"/>
+                    <field name="shipping_charges_basic"/>
+                    <field name="shipping_charges_sgst"/>
+                    <field name="shipping_charges_cgst"/>
+                    <field name="shipping_charges_igst"/>
+                    <field name="gift_wrap_basic"/>
+                    <field name="gift_wrap_sgst"/>
+                    <field name="gift_wrap_cgst"/>
+                    <field name="gift_wrap_igst"/>
+                    <field name="item_promo_discount_basic"/>
+                    <field name="item_promo_sgst"/>
+                    <field name="item_promo_cgst"/>
+                    <field name="item_promo_igst"/>
+                    <field name="subtotal_with_tax"/>
+                    <field name="grand_subtotal"/>
+                    <!-- <field name="company_id" invisible="1"/> -->
+                    <!-- <field name="currency_id" invisible="1"/> -->
+                    <!-- <field name="state"/> -->
+                    <!-- <field name="sgst_rate"/> -->
+                    <!-- <field name="sgst_amount"/> -->
+                    <!-- <field name="utgst_rate"/> -->
+                    <!-- <field name="utgst_amount"/> -->
+                    <!-- <field name="cgst_rate"/> -->
+                    <!-- <field name="cgst_amount"/> -->
+                    <!-- <field name="comp_c_r"/> -->
+                    <!-- <field name="comp_c_a"/> -->
+                    <!-- <field name="igst_amount"/>
+                    <field name="sgst_rate"/>
+                    <field name="sgst_amount"/>
+                    <field name="utgst_rate"/>
+                    <field name="utgst_amount"/>
+                    <field name="cgst_rate"/>
+                    <field name="cgst_amount"/>
+                    <field name="comp_c_r"/>
+                    <field name="comp_c_a"/>
+                    <field name="gstin_of_supplier"/>
+                    <field name="irn_no"/>
+                    <field name="irn_f_s"/>
+                    <field name="irn_date"/>
+                    <field name="irn_e_c"/>
+	                	<field name="currency_id"/> -->
+                  </group>
+            </group>
+            <!-- <notebook>
+              <page string="Stock Transfer Lines" name="stock_transfer_lines">
+                <field name="stock_transfer_line" widget="section_and_note_one2many">
+                  <tree string="Stock Transfer Lines1" editable="bottom">
+                    <field name="product_product_id"/>
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="sku"/>
+                    <field name="asin"/>
+                    <field name="l10n_in_hsn_code"/>
+                    <field name="unit_price"/>
+                    <field name="quntity"/>
+                    <field name="taxes_id" widget="many2many_tags"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="taxable_value"/>
+                    <field name="igst_rate"/>
+                    <field name="igst_amount"/>
+                    <field name="other_charges"/>
+                    <field name="invoice_vales"/>
+                    <field name="sales_ladgers"/>
+                    <field name="trans_id"/>
+                    <field name="invoice_no"/>
+                    <field name="stock_transfer"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook> -->
+            <!-- <group>
+              <group>
+              </group>
+              <group>
+                <group>
+                </group>
+                <group>
+                  <field name="total_taxable_value" decoration-bf="1"/>
+                  <field name="total_igst_amount" decoration-bf="1" />
+                  <field name="other_charges" decoration-bf="1" />
+                  <field name="total_invoice_vales" decoration-bf="1"/>
+                </group>
+              </group>
+              </group> -->
+          </sheet>
+          </form>
+			</field>
+		</record>
+
+		<record id="return_order_view1111" model="ir.ui.view">
+            <field name="name">return.order.tree</field>
+            <field name="model">return.order</field>
+            <field name="arch" type="xml">
+            	<tree string="Return Order">
+                <field name="name"/>
+                <field name="return_date"/>
+                <field name="order_date"/>
+                <field name="portal_order_id"/>
+                <field name="odoo_order_b2b"/>
+                <field name="odoo_order_b2c"/>
+                <field name="sale_order_id"/>
+                <field name="invoice_order_id"/>
+                <field name="from_warehouse_id"/>
+                <field name="warehouse_id"/>
+                <field name="return_reason"/>
+                <field name="month_of_return"/>
+                <field name="state"/>
+                <field name="default_code"/>
+                <field name="product_product_id"/>
+                <field name="asin"/>
+                <field name="quntity"/>
+                <field name="invoice_line_id"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="price_unit"/>
+                <field name="price_subtotal"/>
+                <field name="price_total"/>
+                <field name="tax_ids"/>
+                <field name="product_hsn"/>
+                <field name="portal_price"/>
+
+                <field name="shipping_charges"/>
+                <field name="gift_wrap_price"/>
+                <field name="item_promo_discount"/>
+
+                <field name="sgst_rate"/>
+                <field name="sgst_amount"/>
+                <field name="cgst_rate"/>
+                <field name="cgst_amount"/>
+                <field name="igst_rate"/>
+                <field name="igst_amount"/>
+                <field name="tax_sum"/>
+                <field name="price_tax"/>
+                <field name="shipping_charges_basic"/>
+                <field name="shipping_charges_sgst"/>
+                <field name="shipping_charges_cgst"/>
+                <field name="shipping_charges_igst"/>
+                <field name="gift_wrap_basic"/>
+                <field name="gift_wrap_sgst"/>
+                <field name="gift_wrap_cgst"/>
+                <field name="gift_wrap_igst"/>
+                <field name="item_promo_discount_basic"/>
+                <field name="item_promo_sgst"/>
+                <field name="item_promo_cgst"/>
+                <field name="item_promo_igst"/>
+                <field name="subtotal_with_tax"/>
+                <field name="grand_subtotal"/>
+                <!-- <field name="total_taxable_value" sum="Total Taxable Vales" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="total_igst_amount" sum="Total IGST Amount" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="other_charges" sum="Total Other Charges" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/>
+                <field name="total_invoice_vales" sum="Total Invoice Vales" widget="monetary" decoration-bf="1" optional="show" modifiers="{'readonly':true}"/> -->
+                <!-- <field name="igst_rate"/> -->
+                <!-- <field name="sgst_rate"/> -->
+                <!-- <field name="sgst_amount"/> -->
+                <!-- <field name="utgst_rate"/> -->
+                <!-- <field name="utgst_amount"/> -->
+                <!-- <field name="cgst_rate"/> -->
+                <!-- <field name="cgst_amount"/> -->
+                <!-- <field name="comp_c_r"/> -->
+                <!-- <field name="comp_c_a"/> -->
+                <!-- <field name="company_id" invisible="1"/> -->
+                <!-- <field name="currency_id" invisible="1"/> -->
+                <!-- <field name="ship_from_fc"/> -->
+                <!-- <field name="state"/> -->
+            	</tree>
+			</field>
+		</record>
+    <record id="return_order_filter_view" model="ir.ui.view">
+            <field name="name">.return.order.search</field>
+            <field name="model">return.order</field>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+              <search string="Return Order">
+                    <field name="name"/>
+                    <field name="return_o_no"/>
+                    <field name="portal_order_id"/>
+                    <filter string="Draft" name="state" domain="[('state', '=', 'draft')]" help="Orders in draft state"/>
+                    <!-- <filter string="Stock Transfer Supplier" name="ship_from_fc" domain="[]" context="{'group_by': 'ship_from_fc'}"/> -->
+                    <filter string="Return To Warehouse" name="warehouse_id" domain="[]" context="{'group_by': 'warehouse_id'}"/>
+                    <filter string="Return Reason" name="return_reason" domain="[]" context="{'group_by': 'return_reason'}"/>
+                    <filter string="Month of Return Order" name="month_of_return" domain="[]" context="{'group_by': 'month_of_return'}"/>
+                    <filter string=" Total Amount" name="grand_subtotal" domain="[]" context="{'group_by': 'grand_subtotal'}"/>
+                    <filter string="Portal Price" name="portal_price" domain="[]" context="{'group_by': 'portal_price'}"/>
+                    <filter string="Order Category" name="order_category" domain="[]" context="{'group_by': 'order_category'}"/>
+                    <filter string="RTO Status" name="state" domain="[]" context="{'group_by': 'state'}"/>
+              </search>
+            </field>
+    </record>
+
+	      <record id="action_return_order" model="ir.actions.act_window">
+            <field name="name">Return Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">return.order</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="domain">[('invoice_status','=','upselling')]</field> -->
+            <!-- <field name="context">{'create': True}</field> -->
+            <!-- <field name="search_view_id" ref="view_sales_order_filter"/> -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No Return Order Records are found.</p>
+            </field>
+        </record>
+
+        <record id="custom_stock.action_return_order" model="ir.actions.act_window">
+            <field name="domain">[('create_date', '>=', '2023-04-01')]</field>
+        </record>
+
+        
+
+     <menuitem id="menu_return_order" parent="stock.menu_stock_root" name="Return Order" sequence="19"/> 
+    
+    <menuitem id="menu_retrn_order_sinew" parent="custom_stock.menu_return_order" name="Return Order Healthgenie" action="custom_stock.action_return_order" sequence="1"/>
+   
+   
+    <menuitem id="menu_retrn_order_account" parent="account.menu_finance" name="Return Order" sequence="26"/>
+    <menuitem id="menu_retrn_order_account_sinew" parent="custom_stock.menu_retrn_order_account" name="Return Order Healthgenie" action="custom_stock.action_return_order" sequence="3" />
+  
+   
+      <record id="action_confirm_return_order" model="ir.actions.server">
+            <field name="name">Confirm Return Order</field>
+            <field name="model_id" ref="custom_stock.model_return_order"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_confirm()</field>
+        </record>
+            <!-- <field name="type">ir.actions.server</field> -->
+     <menuitem id="menu_return_order_confirm" name="Return Order Confirm123" parent="custom_stock.menu_return_order" sequence="3" action="custom_stock.action_confirm_return_order"/>
+	</data>
+</odoo>
+
